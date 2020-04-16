@@ -1,0 +1,109 @@
+name: ECS Service Deploy
+description: Deploy an ECS Service using Terraform
+inputs:
+  workspace:
+    description: 'Terraform Workspace'
+    required: true
+
+  project:
+    description: 'Project this Service is part of'
+    required: true
+
+  owner:
+    description: 'Project owner/team'
+    required: true
+
+  email:
+    description: 'Project email address'
+    required: true
+
+  public:
+    description: 'Enable Public IP Allocation'
+    required: true
+    default: false
+
+  command:
+    description: 'Specify an alternate command/entrypoint'
+    required: false
+  cpu:
+    description: 'ECS CPU Allocation'
+    required: true
+    default: 128
+  mem:
+    description: 'ECS Memory Allocation'
+    required: true
+    default: 512
+
+  certificate:
+    description: 'Automatic SSL Certification Creation'
+    required: true
+    default: true
+  certificate_alt_names:
+    description: 'List of subjective alternate names to apply to the generated SSL cert'
+    required: false
+
+  autoscaling:
+    description: 'Enable/Disable service autoscaling'
+    required: true
+    default: false
+  autoscaling_min:
+    description: 'Minimum number of ECS tasks during scale-in'
+    required: true
+    default: 3
+  autoscaling_max:
+    description: 'Maximum number of ECS tasks during scale-out'
+    required: true
+    default: 3
+
+  target_port:
+    description: 'TCP/IP port the container is listening on'
+    required: true
+    default: 80
+  target_protocol:
+    description: 'TCP/IP protocol the container communications with'
+    required: true
+    default: 'http'
+
+  listener_port:
+    description: 'TCP/IP port the loadbalancer should listen on'
+    required: true
+    default: 443
+  listener_protocol:
+    description: 'TCP/IP protocol the loadbalancer uses for communication'
+    required: true
+    default: 'https'
+
+  health_check_path:
+    description: 'Health check path'
+    required: true
+    default: /
+  health_check_timeout:
+    description: 'Health check timeout'
+    reqired: true
+    default: 60
+  health_check_grace:
+    description: 'Grace period in which to ignore the health check during task startup'
+    reqired: true
+    default: 120
+
+  debug:
+    description: 'enable debugging'
+    default: false
+
+outputs:
+  service-arn:
+    description: 'ECS Service ARN'
+  task-arn:
+    description: 'ECS Task ARN'
+  loadbalancer-arn:
+    description: 'Network Loadbalancer ARN'
+  loadbalancer-endpoint:
+    description: 'Network Loadbalancer Endpoint'
+  certificate-arn:
+    description: 'SSL Certificate ARN'
+  certificate-name:
+    description: 'DNS Name on the ACM Certificate'
+
+runs:
+  using: docker
+  image: Dockerfile
