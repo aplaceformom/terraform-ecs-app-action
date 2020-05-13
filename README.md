@@ -7,7 +7,7 @@ Usage
 
 ```yaml
   - name: My Project
-    uses: aplaceformom/terraform-shared-state-action@master
+    uses: aplaceformom/terraform-project-base-action@master
     with:
       project: examples
       owner: MyTeam
