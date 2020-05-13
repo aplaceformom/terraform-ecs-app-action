@@ -6,35 +6,24 @@ Usage
 -----
 
 ```yaml
-  - name: My Service
-    uses: aplaceformom/terraform-ecs-app-action@master
+  - name: My Project
+    uses: aplaceformom/terraform-shared-state-action@master
     with:
-      workspace: dev
       project: examples
       owner: MyTeam
       email: myteam@mydomain.org
+      remote_state_bucket: apfm-terraform-remotestate
+      remote_lock_table: terraform-statelock
+      shared_state_key: /shared-infra/remotestate.file
+  - name: My Service
+    uses: aplaceformom/terraform-ecs-app-action@master
+    with:
       public: true
       debug: false
 ```
 
 Inputs
 ------
-
-### workspace
-Terraform Workspace
-- required: true
-
-### project
-Project this Service is part of
-- required: true
-
-### owner
-Project owner/team
-- required: true
-
-### email
-Project email address
-- required: true
 
 ### public
 Enable Public IP Allocation

@@ -1,22 +1,6 @@
 name: ECS Service Deploy
 description: Deploy an ECS Service using Terraform
 inputs:
-  workspace:
-    description: 'Terraform Workspace'
-    required: true
-
-  project:
-    description: 'Project this Service is part of'
-    required: true
-
-  owner:
-    description: 'Project owner/team'
-    required: true
-
-  email:
-    description: 'Project email address'
-    required: true
-
   public:
     description: 'Enable Public IP Allocation'
     required: true
