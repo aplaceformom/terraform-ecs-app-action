@@ -36,6 +36,10 @@ inputs:
     description: 'Maximum number of ECS tasks during scale-out'
     default: 3
 
+  policies:
+    description: 'Comma separated list of policies to attach to the ECS task'
+    default: ""
+
   target_port:
     description: 'TCP/IP port the container is listening on'
     default: 80

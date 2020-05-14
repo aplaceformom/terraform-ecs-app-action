@@ -5,6 +5,7 @@ locals {
   account_id = "${data.aws_caller_identity.current.account_id}"
   region     = "${data.aws_region.current.name}"
   ecr_repo   = "${local.account_id}.dkr.ecr.${local.region}.amazonaws.com/${var.name}"
+  policies   = split(",", var.policies)
 }
 
 resource "aws_iam_role" "ecs" {
@@ -29,7 +30,7 @@ EOF
 resource "aws_iam_role_policy_attachment" "ecs" {
   count = length(local.policies)
   role  = aws_iam_role.ecs.name
-  policy_arn = "arn:aws:iam::${module.shared.account["id"]}:policy/${local.policies[count.index]}"
+  policy_arn = local.policies[count.index]
 }
 
 module "ecs" {
