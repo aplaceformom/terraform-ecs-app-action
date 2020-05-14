@@ -15,7 +15,8 @@ inputs:
 
   command:
     description: 'Specify an alternate command/entrypoint'
-    required: false
+    default: ""
+
   cpu:
     description: 'ECS CPU Allocation'
     default: 128
@@ -28,7 +29,7 @@ inputs:
     default: true
   certificate_alt_names:
     description: 'List of subjective alternate names to apply to the generated SSL cert'
-    required: false
+    default: ""
 
   autoscaling:
     description: 'Enable/Disable service autoscaling'
