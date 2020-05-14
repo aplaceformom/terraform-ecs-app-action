@@ -5,7 +5,7 @@ locals {
   account_id = "${data.aws_caller_identity.current.account_id}"
   region     = "${data.aws_region.current.name}"
   ecr_repo   = "${local.account_id}.dkr.ecr.${local.region}.amazonaws.com/${var.name}"
-  policies   = split(",", var.policies)
+  policies   = var.policies != "" ? split(",", var.policies) : []
 
   cluster    = {
     id                   = var.cluster_id
