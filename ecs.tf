@@ -17,6 +17,29 @@ locals {
     security_groups      = var.cluster_security_groups
     execution_role_arn   = var.cluster_execution_role_arn
   }
+
+  task = [{
+    name      = var.name
+    image     = "${local.ecr_repo}/${var.name}:${var.label}"
+    cpu       = var.cpu
+    memory    = var.mem
+    command   = var.command
+    essential = true
+    portMappings = [{
+      hostPort      = var.target_port
+      containerPort = var.target_port
+      protocol      = "tcp"
+    }]
+    logConfiguration = {
+      logDriver = "awslogs"
+      options = {
+        awslogs-create-group  = "true"
+        awslogs-region        = var.region
+        awslogs-group         = var.project_owner
+        awslogs-stream-prefix = var.prefix
+      }
+    }
+  }]
 }
 
 resource "aws_iam_role" "ecs" {
@@ -79,5 +102,5 @@ module "ecs" {
 
   security_group_ids = [aws_security_group.self.id]
 
-  template = tostring(jsonencode(local.ecs_task))
+  template = tostring(jsonencode(local.task))
 }
