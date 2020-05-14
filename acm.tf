@@ -17,7 +17,13 @@ resource "aws_acm_certificate" "cert" {
   count             = var.certificate ? 1 : 0
   domain_name       = "${var.name}.${replace(data.aws_route53_zone.selected.name, "/[.]$/", "")}"
   validation_method = "DNS"
-  tags              = var.tags
+
+  tags = {
+    app     = var.name
+    project = var.project_name
+    owner   = var.project_owner
+    email   = var.project_email
+  }
 
   # Note: AWS ACM automatically includes the domain_name in the Subject Alternative Names
   subject_alternative_names = local.alt_names

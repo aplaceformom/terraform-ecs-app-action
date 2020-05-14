@@ -1,6 +1,10 @@
 name: ECS Service Deploy
 description: Deploy an ECS Service using Terraform
 inputs:
+  prefix:
+    description: 'Resource prefix to use when creating resources'
+    default: ''
+
   label:
     desciption: 'label of ECR image to deploy'
     default: latest
