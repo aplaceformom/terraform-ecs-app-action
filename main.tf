@@ -34,7 +34,6 @@ module "ecs" {
   cpus    = var.cpu
   public  = var.public
   cluster = module.shared.cluster
-  log2elk = false
 
   task_role_arn = aws_iam_role.ecs.arn
 
