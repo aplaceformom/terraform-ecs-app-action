@@ -6,6 +6,17 @@ locals {
   region     = "${data.aws_region.current.name}"
   ecr_repo   = "${local.account_id}.dkr.ecr.${local.region}.amazonaws.com/${var.name}"
   policies   = split(",", var.policies)
+
+  cluster    = {
+    id                   = var.cluster_id
+    service_namespace_id = var.cluster_service_namespace_id
+    region               = var.cluster_region
+    vpc_id               = var.cluster_vpc_id
+    public_subnets       = var.cluster_public_subnets
+    private_subnets      = var.cluster_private_subnets
+    security_groups      = var.cluster_security_groups
+    execution_role_arn   = var.cluster_execution_role_arn
+  }
 }
 
 resource "aws_iam_role" "ecs" {
@@ -43,7 +54,7 @@ module "ecs" {
   memory  = var.mem
   cpus    = var.cpu
   public  = var.public
-  cluster = module.shared.cluster
+  cluster = local.cluster
 
   task_role_arn = aws_iam_role.ecs.arn
 
