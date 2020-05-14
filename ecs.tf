@@ -19,6 +19,15 @@ locals {
     elk_endpoint         = var.cluster_elk_endpoint
   }
 
+  env_file = {} # FIXME
+  environs = merge(local.env_file, { environment = terraform.workspace })
+  environ = [
+    for key in keys(local.environs): {
+      name = key
+      value = local.environs[key]
+    }
+  ]
+
   task = [{
     name      = var.name
     image     = "${local.ecr_repo}/${var.name}:${var.label}"
@@ -26,6 +35,7 @@ locals {
     memory    = var.mem
     command   = var.command
     essential = true
+    environment = local.environ
     portMappings = [{
       hostPort      = var.target_port
       containerPort = var.target_port
