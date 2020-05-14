@@ -33,7 +33,7 @@ locals {
     image     = "${local.ecr_repo}/${var.name}:${var.label}"
     cpu       = var.cpu
     memory    = var.mem
-    command   = var.command
+    command   = split(" ", var.command)
     essential = true
     environment = local.environ
     portMappings = [{
