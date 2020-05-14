@@ -70,7 +70,12 @@ variable "health_check_path" {
 
 variable "health_check_timeout" {
   type = number
-  default = 60
+  default = 10
+}
+
+variable "health_check_interval" {
+  type = number
+  default = 30
 }
 
 variable "health_check_grace_period" {

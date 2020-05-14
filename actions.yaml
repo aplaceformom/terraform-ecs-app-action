@@ -51,7 +51,10 @@ inputs:
     default: /
   health_check_timeout:
     description: 'Health check timeout'
-    default: 60
+    default: 10
+  health_check_interval:
+    description: 'Health check interval'
+    default: 30
   health_check_grace_period:
     description: 'Grace period in which to ignore the health check during task startup'
     default: 120

@@ -93,10 +93,15 @@ Health check path
 - required: false
 - default: /
 
+### health_check_interval
+Health check interval
+- reqired: false
+- default: 30
+
 ### health_check_timeout
 Health check timeout
 - reqired: false
-- default: 60
+- default: 10
 
 ### health_check_grace
 Grace period in which to ignore the health check during task startup
