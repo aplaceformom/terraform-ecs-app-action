@@ -16,6 +16,7 @@ locals {
     private_subnets      = var.cluster_private_subnets
     security_groups      = var.cluster_security_groups
     execution_role_arn   = var.cluster_execution_role_arn
+    elk_endpoint         = var.cluster_elk_endpoint
   }
 
   task = [{
