@@ -63,11 +63,11 @@ inputs:
     default: /
   health_check_timeout:
     description: 'Health check timeout'
-    reqired: true
+    required: true
     default: 60
-  health_check_grace:
+  health_check_grace_period:
     description: 'Grace period in which to ignore the health check during task startup'
-    reqired: true
+    required: true
     default: 120
 
   debug:
