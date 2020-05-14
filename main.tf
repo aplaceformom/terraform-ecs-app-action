@@ -29,7 +29,7 @@ module "ecs" {
   name    = var.name
   prefix  = local.ecs["prefix"]
   family  = local.ecs["family"]
-  image   = "${local.ecs["image"]}:${var.deploy_id}"
+  image   = var.image
   memory  = var.mem
   cpus    = var.cpu
   public  = var.public

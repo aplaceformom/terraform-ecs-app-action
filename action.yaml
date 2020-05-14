@@ -1,6 +1,10 @@
 name: ECS Service Deploy
 description: Deploy an ECS Service using Terraform
 inputs:
+  image:
+    desciption: 'URI of ECR image to deploy'
+    required: true
+
   public:
     description: 'Enable Public IP Allocation'
     default: false
