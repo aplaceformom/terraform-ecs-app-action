@@ -3,7 +3,6 @@ description: Deploy an ECS Service using Terraform
 inputs:
   public:
     description: 'Enable Public IP Allocation'
-    required: true
     default: false
 
   command:
@@ -11,16 +10,13 @@ inputs:
     required: false
   cpu:
     description: 'ECS CPU Allocation'
-    required: true
     default: 128
   mem:
     description: 'ECS Memory Allocation'
-    required: true
     default: 512
 
   certificate:
     description: 'Automatic SSL Certification Creation'
-    required: true
     default: true
   certificate_alt_names:
     description: 'List of subjective alternate names to apply to the generated SSL cert'
@@ -28,46 +24,36 @@ inputs:
 
   autoscaling:
     description: 'Enable/Disable service autoscaling'
-    required: true
     default: false
   autoscaling_min:
     description: 'Minimum number of ECS tasks during scale-in'
-    required: true
     default: 3
   autoscaling_max:
     description: 'Maximum number of ECS tasks during scale-out'
-    required: true
     default: 3
 
   target_port:
     description: 'TCP/IP port the container is listening on'
-    required: true
     default: 80
   target_protocol:
     description: 'TCP/IP protocol the container communications with'
-    required: true
     default: 'http'
 
   listener_port:
     description: 'TCP/IP port the loadbalancer should listen on'
-    required: true
     default: 443
   listener_protocol:
     description: 'TCP/IP protocol the loadbalancer uses for communication'
-    required: true
     default: 'https'
 
   health_check_path:
     description: 'Health check path'
-    required: true
     default: /
   health_check_timeout:
     description: 'Health check timeout'
-    required: true
     default: 60
   health_check_grace_period:
     description: 'Grace period in which to ignore the health check during task startup'
-    required: true
     default: 120
 
   debug:
