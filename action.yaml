@@ -13,10 +13,6 @@ inputs:
     description: 'Enable Public IP Allocation'
     default: false
 
-  command:
-    description: 'Specify an alternate command/entrypoint'
-    default: ""
-
   cpu:
     description: 'ECS CPU Allocation'
     default: 128
