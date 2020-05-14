@@ -19,14 +19,14 @@ locals {
     elk_endpoint         = var.cluster_elk_endpoint
   }
 
-  env_file = {} # FIXME
-  environs = merge(local.env_file, { environment = terraform.workspace })
-  environ = [
-    for key in keys(local.environs): {
-      name = key
-      value = local.environs[key]
-    }
-  ]
+  #task_env = var.task_env != "" ? var.task_env : {}
+  #environs = merge(local.task_env, { environment = terraform.workspace })
+  #environ = [
+  # for key in keys(local.environs): {
+  #   name = key
+  #   value = local.environs[key]
+  # }
+  #]
 
   task = [{
     name      = var.name
@@ -35,7 +35,7 @@ locals {
     memory    = var.mem
     command   = []
     essential = true
-    environment = local.environ
+    environment = tostring(jsonencode([{name = "environment", value = terraform.workspace}]))
     portMappings = [{
       hostPort      = var.target_port
       containerPort = var.target_port

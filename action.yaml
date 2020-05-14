@@ -20,6 +20,10 @@ inputs:
     description: 'ECS Memory Allocation'
     default: 512
 
+  task_env:
+    description: 'Application ENV. E.g. { VAR1 = VAL1, VAR2 = VAL2 }'
+    default: ""
+
   certificate:
     description: 'Automatic SSL Certification Creation'
     default: true
