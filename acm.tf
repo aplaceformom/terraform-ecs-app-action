@@ -10,7 +10,7 @@ data "aws_route53_zone" "selected" {
 }
 
 locals {
-  alt_names = split(",", var.certificate_alt_names)
+  alt_names = var.certificate_alt_names != "" ? split(",", var.certificate_alt_names) : []
 }
 
 resource "aws_acm_certificate" "cert" {
