@@ -18,39 +18,6 @@ locals {
     execution_role_arn   = var.cluster_execution_role_arn
     elk_endpoint         = var.cluster_elk_endpoint
   }
-
-  #task_env = var.task_env != "" ? var.task_env : {}
-  #environs = merge(local.task_env, { environment = terraform.workspace })
-  #environ = [
-  # for key in keys(local.environs): {
-  #   name = key
-  #   value = local.environs[key]
-  # }
-  #]
-
-  task = [{
-    name      = var.name
-    image     = "${local.ecr_repo}/${var.name}:${var.label}"
-    cpu       = var.cpu
-    memory    = var.mem
-    command   = []
-    essential = true
-    environment = tostring(jsonencode([{name = "environment", value = terraform.workspace}]))
-    portMappings = [{
-      hostPort      = var.target_port
-      containerPort = var.target_port
-      protocol      = "tcp"
-    }]
-    logConfiguration = {
-      logDriver = "awslogs"
-      options = {
-        awslogs-create-group  = "true"
-        awslogs-region        = var.region
-        awslogs-group         = var.project_owner
-        awslogs-stream-prefix = var.prefix
-      }
-    }
-  }]
 }
 
 resource "aws_iam_role" "ecs" {
@@ -89,6 +56,7 @@ module "ecs" {
   cpus    = var.cpu
   public  = var.public
   cluster = local.cluster
+  region  = var.region
 
   task_role_arn = aws_iam_role.ecs.arn
 
@@ -113,5 +81,5 @@ module "ecs" {
 
   security_group_ids = [aws_security_group.self.id]
 
-  template = tostring(jsonencode(local.task))
+  environment = var.task_env
 }
