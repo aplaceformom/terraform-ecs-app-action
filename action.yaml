@@ -35,6 +35,9 @@ inputs:
   autoscaling_max:
     description: 'Maximum number of ECS tasks during scale-out'
     default: 3
+  autoscaling_cooldown:
+    description: 'How long to wait before scale-in'
+    default: 300
 
   policies:
     description: 'Comma separated list of policies to attach to the ECS task'
