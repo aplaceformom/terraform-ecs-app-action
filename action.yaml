@@ -15,7 +15,7 @@ inputs:
 
   cpu:
     description: 'ECS CPU Allocation'
-    default: 128
+    default: 256
   mem:
     description: 'ECS Memory Allocation'
     default: 512

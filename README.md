@@ -37,7 +37,7 @@ Specify an alternate command/entrypoint for the Docker container
 ### cpu
 ECS CPU Allocation
 - required: false
-- default: 128
+- default: 256
 
 ### mem
 ECS Memory Allocation
