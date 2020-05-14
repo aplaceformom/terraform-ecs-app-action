@@ -69,7 +69,7 @@ module "ecs" {
 
   lb_port     = var.listener_port
   lb_protocol = var.listener_protocol
-  certificate = module.cert.arn
+  certificate = var.certificate ? aws_acm_certificate.cert[0].arn : ""
 
   health_check_port         = var.target_port
   health_check_path         = var.health_check_path
