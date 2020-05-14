@@ -35,7 +35,7 @@ resource "aws_acm_certificate" "cert" {
 
 resource "aws_route53_record" "cert_record" {
   ## We'll create one record for the default `domain_name` + one record for each SAN name
-  count   = var.certificate ? local.alt_names + 1 : 0
+  count   = var.certificate ? length(local.alt_names) + 1 : 0
   zone_id = var.dns_zone_id_public
   name    = aws_acm_certificate.cert.0.domain_validation_options[count.index]["resource_record_name"]
   type    = aws_acm_certificate.cert.0.domain_validation_options[count.index]["resource_record_type"]
