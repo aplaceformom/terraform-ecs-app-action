@@ -82,4 +82,5 @@ module "ecs" {
   security_group_ids = [aws_security_group.self.id]
 
   environment = var.environment
+  secrets = var.secrets
 }

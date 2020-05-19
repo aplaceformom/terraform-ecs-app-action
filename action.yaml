@@ -24,6 +24,10 @@ inputs:
     description: 'Application ENV. E.g. { VAR1 = VAL1, VAR2 = VAL2 }'
     default: "{}"
 
+  secrets:
+    description: 'Application secerts (similar to environment). E.g. { SECRET1 = VAL1, SECRET2 = VAL2 }'
+    default: "{}"
+
   certificate:
     description: 'Automatic SSL Certification Creation'
     default: true

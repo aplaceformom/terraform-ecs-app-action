@@ -38,6 +38,10 @@ Specify an alternate command/entrypoint for the Docker container
 Specify a map of key=value pairs to be passed off in the ECS containers environment.
 - required: false
 
+### secrets
+Specify a map of key=value pairs to be passed off in the ECS containers secrets.
+- required: false
+
 ### cpu
 ECS CPU Allocation
 - required: false
