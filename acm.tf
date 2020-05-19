@@ -15,11 +15,12 @@ locals {
 
 resource "aws_acm_certificate" "cert" {
   count             = var.certificate ? 1 : 0
-  domain_name       = "${var.name}.${replace(data.aws_route53_zone.selected.name, "/[.]$/", "")}"
+  domain_name       = "${var.github_project}.${replace(data.aws_route53_zone.selected.name, "/[.]$/", "")}"
   validation_method = "DNS"
 
   tags = {
-    app     = var.name
+    app     = var.github_project
+    repo    = var.github_repository
     project = var.project_name
     owner   = var.project_owner
     email   = var.project_email

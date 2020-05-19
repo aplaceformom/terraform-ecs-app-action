@@ -4,7 +4,7 @@ data "aws_region" "current" {}
 locals {
   account_id = "${data.aws_caller_identity.current.account_id}"
   region     = "${data.aws_region.current.name}"
-  ecr_repo   = "${local.account_id}.dkr.ecr.${local.region}.amazonaws.com/${var.name}"
+  ecr_repo   = "${local.account_id}.dkr.ecr.${local.region}.amazonaws.com/${var.github_project}"
   policies   = var.policies != "" ? split(",", var.policies) : []
 
   cluster    = {
@@ -21,7 +21,7 @@ locals {
 }
 
 resource "aws_iam_role" "ecs" {
-  name = "${var.name}-role"
+  name = "${var.github_project}-role"
   assume_role_policy = <<EOF
 {
   "Version": "2012-10-17",
@@ -48,10 +48,10 @@ resource "aws_iam_role_policy_attachment" "ecs" {
 module "ecs" {
   source = "github.com/aplaceformom/terraform-ecs-app"
 
-  name    = var.name
+  name    = var.github_project
   prefix  = var.prefix != "" ? var.prefix : "ecs"
   family  = var.project_name
-  image   = "${local.ecr_repo}/${var.name}:${var.label}"
+  image   = "${local.ecr_repo}/${var.github_project}:${var.label}"
   memory  = var.mem
   cpus    = var.cpu
   public  = var.public
