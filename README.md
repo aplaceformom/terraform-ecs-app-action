@@ -36,10 +36,22 @@ Specify an alternate command/entrypoint for the Docker container
 
 ### environment
 Specify a map of key=value pairs to be passed off in the ECS containers environment.
+
+Example:
+```
+with:
+  environment: '{ VAR1 = VAL1, VAR2 = VAL2 }'
+```
 - required: false
 
 ### secrets
 Specify a map of key=value pairs to be passed off in the ECS containers secrets.
+
+Example:
+```
+with:
+  environment: '{ VAR1 = VAL1, VAR2 = VAL2 }'
+```
 - required: false
 
 ### cpu
