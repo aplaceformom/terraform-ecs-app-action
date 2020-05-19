@@ -7,7 +7,7 @@ Usage
 
 ```yaml
   - name: My Project
-    uses: aplaceformom/terraform-project-base-action@master
+    uses: apfm-actions/terraform-project-base-action@master
     with:
       project: examples
       owner: MyTeam
@@ -16,7 +16,7 @@ Usage
       remote_lock_table: terraform-statelock
       shared_state_key: /shared-infra/remotestate.file
   - name: My Service
-    uses: aplaceformom/terraform-ecs-app-action@master
+    uses: apfm-actions/terraform-ecs-app-action@master
     with:
       public: true
       debug: false
