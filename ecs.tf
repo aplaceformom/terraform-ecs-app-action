@@ -83,4 +83,12 @@ module "ecs" {
 
   environment = var.environment
   secrets = var.secrets
+
+  tags = {
+    app     = var.github_project
+    repo    = var.github_repository
+    project = var.project_name
+    owner   = var.project_owner
+    email   = var.project_email
+  }
 }
