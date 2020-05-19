@@ -75,6 +75,15 @@ inputs:
     description: 'Grace period in which to ignore the health check during task startup'
     default: 120
 
+  plan:
+    description: 'Perform a Terraform Plan'
+    default: true
+  deploy:
+    description: 'Perform Terraform Apply'
+    default: true
+  destroy:
+    description: 'Perform Terraform Destroy'
+    default: false
   debug:
     description: 'enable debugging'
     default: false
