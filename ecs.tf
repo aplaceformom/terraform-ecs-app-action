@@ -81,5 +81,5 @@ module "ecs" {
 
   security_group_ids = [aws_security_group.self.id]
 
-  environment = var.task_env
+  environment = var.environment
 }

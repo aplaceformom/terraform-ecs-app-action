@@ -34,6 +34,10 @@ Enable Public IP Allocation
 Specify an alternate command/entrypoint for the Docker container
 - required: false
 
+### environment
+Specify a map of key=value pairs to be passed off in the ECS containers environment.
+- required: false
+
 ### cpu
 ECS CPU Allocation
 - required: false
