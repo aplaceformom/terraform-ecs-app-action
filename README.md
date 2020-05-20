@@ -1,6 +1,12 @@
 ECS App Action
 ==============
-Deploy an ECS Application using Terraform.
+A [GitHub Action][GitHub Actions][] to deploy an AWS ECS Application using
+Terraform.
+
+See also:
+ - https://github.com/apfm-actions
+ - https://help.github.com/en/actions
+ - https://github.com/apfm-actions/terraform-project-base-action
 
 Usage
 -----
@@ -144,9 +150,11 @@ Outputs
 | certificate-arn       | SSL Certificate ARN             |
 | certificate-name      | DNS Name on the ACM Certificate |
 
-References
-----------
+[//]: # (The following are reference links used elsewhere in the document)
 
-- https://help.github.com/en/actions/building-actions/creating-a-docker-container-action
-- https://help.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions
-- https://help.github.com/en/actions/configuring-and-managing-workflows/using-environment-variables
+[Git]: https://git-scm.com/
+[GitHub]: https://www.github.com
+[GitHub Actions]: https://help.github.com/en/actions
+[Terraform]: https://www.terraform.io/
+[Docker]: https://www.docker.com
+[Dockerfile]: https://docs.docker.com/engine/reference/builder/
