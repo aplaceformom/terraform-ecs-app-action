@@ -18,6 +18,7 @@ Usage
       project: examples
       owner: MyTeam
       email: myteam@mydomain.org
+      tf_assume_role: TerraformApply
       remote_state_bucket: apfm-terraform-remotestate
       remote_lock_table: terraform-statelock
       shared_state_key: /shared-infra/remotestate.file
