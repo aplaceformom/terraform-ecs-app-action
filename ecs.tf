@@ -6,6 +6,7 @@ locals {
   region     = "${data.aws_region.current.name}"
   ecr_repo   = "${local.account_id}.dkr.ecr.${local.region}.amazonaws.com/${var.github_project}"
   policies   = var.policies != "" ? split(",", var.policies) : []
+  zone_id    = var.public ? var.dns_zone_id_public : var.dns_zone_id_private
 
   cluster    = {
     id                   = var.cluster_id
