@@ -5,6 +5,10 @@ inputs:
     description: 'Resource prefix to use when creating resources'
     default: ''
 
+  image:
+    description: 'ECR repository name containing bootable image'
+    default: ''
+
   label:
     desciption: 'label of ECR image to deploy'
     default: latest

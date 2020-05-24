@@ -4,7 +4,8 @@ data "aws_region" "current" {}
 locals {
   account_id = "${data.aws_caller_identity.current.account_id}"
   region     = "${data.aws_region.current.name}"
-  ecr_repo   = "${local.account_id}.dkr.ecr.${local.region}.amazonaws.com/${var.github_project}"
+  ecr_repo   = "${local.account_id}.dkr.ecr.${local.region}.amazonaws.com"
+  image      = var.image != "" ? var.image : "${local.ecr_repo}/${var.github_project}"
   policies   = var.policies != "" ? split(",", var.policies) : []
   zone_id    = var.public ? var.dns_zone_id_public : var.dns_zone_id_private
 
@@ -57,7 +58,7 @@ module "ecs" {
   name    = var.github_project
   prefix  = var.prefix != "" ? var.prefix : "ecs"
   family  = var.project_name
-  image   = "${local.ecr_repo}/${var.github_project}:${var.label}"
+  image   = "${local.image}:${var.label}"
   memory  = var.mem
   cpus    = var.cpu
   public  = var.public

@@ -32,6 +32,21 @@ Usage
 Inputs
 ------
 
+### prefix
+Resource prefix to use when creating resources
+- required: no
+- default: N/A
+
+### image
+ECR repository name containing bootable image
+- required: no
+- default: (current AWS account ECR repo)
+
+### label
+Label of ECR image to deploy
+- requred: no
+- default: latest
+
 ### public
 Enable Public IP Allocation
 - required: false
