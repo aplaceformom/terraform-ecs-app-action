@@ -40,10 +40,15 @@ resource "aws_iam_role" "ecs" {
 EOF
 }
 
+data "aws_iam_policy" "selected" {
+  count = length(local.policies)
+  arn   = substr(local.policies[count.index], 0, 3) == "arn:aws:" ? local.policies[count.index] : "arn:aws:iam::${var.account_id}:policy/${local.policies[count.index]}"
+}
+
 resource "aws_iam_role_policy_attachment" "ecs" {
   count = length(local.policies)
   role  = aws_iam_role.ecs.name
-  policy_arn = local.policies[count.index]
+  policy_arn = data.aws_iam_policy.selected[count.index].arn
 }
 
 module "ecs" {
