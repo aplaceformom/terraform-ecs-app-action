@@ -2,6 +2,7 @@ data "aws_caller_identity" "current" {}
 data "aws_region" "current" {}
 
 locals {
+  name       = var.name != "" ? "${var.github_project}-${var.name}" : var.github_project
   account_id = "${data.aws_caller_identity.current.account_id}"
   region     = "${data.aws_region.current.name}"
   ecr_repo   = "${local.account_id}.dkr.ecr.${local.region}.amazonaws.com"
@@ -23,7 +24,7 @@ locals {
 }
 
 resource "aws_iam_role" "ecs" {
-  name = "${var.github_project}-role"
+  name = "${local.name}-role"
   assume_role_policy = <<EOF
 {
   "Version": "2012-10-17",
@@ -55,7 +56,7 @@ resource "aws_iam_role_policy_attachment" "ecs" {
 module "ecs" {
   source = "github.com/aplaceformom/terraform-ecs-app"
 
-  name    = var.github_project
+  name    = local.name
   prefix  = var.prefix != "" ? var.prefix : "ecs"
   family  = var.project_name
   image   = "${local.image}:${var.label}"
@@ -92,7 +93,7 @@ module "ecs" {
   secrets = var.secrets
 
   tags = {
-    app     = var.github_project
+    app     = local.name
     repo    = var.github_repository
     project = var.project_name
     owner   = var.project_owner

@@ -32,6 +32,13 @@ Usage
 Inputs
 ------
 
+### name
+An optional ECS application name to append to the github project name when
+creating this resource.  This allows for the deployment of multiple ECS
+applications from the same job.
+- required: no
+- default: N/A
+
 ### prefix
 Resource prefix to use when creating resources
 - required: no

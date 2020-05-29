@@ -1,5 +1,5 @@
 resource "aws_security_group" "self" {
-  description = "${var.github_project} self-group access"
+  description = "${local.name} self-group access"
   vpc_id      = var.network_vpc_id
 
   ingress {

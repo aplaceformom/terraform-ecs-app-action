@@ -1,6 +1,10 @@
 name: ECS Service Deploy
 description: Deploy an ECS Service using Terraform
 inputs:
+  name:
+    description: 'Component name within this deploy. The repo name will be prefixed to this.'
+    default: ''
+
   prefix:
     description: 'Resource prefix to use when creating resources'
     default: ''

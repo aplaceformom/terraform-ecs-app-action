@@ -1,6 +1,6 @@
 resource "aws_route53_record" "default" {
   zone_id = local.zone_id
-  name    = var.github_project
+  name    = local.name
   type    = "A"
 
   alias {
