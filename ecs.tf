@@ -58,7 +58,7 @@ module "ecs" {
   source = "github.com/aplaceformom/terraform-ecs-app"
 
   name    = local.name
-  prefix  = var.prefix != "" ? var.prefix : "ecs"
+  prefix  = var.prefix != "" ? var.prefix : substr(local.name, 0, 6)
   family  = var.project_name
   image   = "${local.image}:${var.label}"
   memory  = var.mem
