@@ -45,7 +45,7 @@ EOF
 
 data "aws_iam_policy" "selected" {
   count = length(local.policies)
-  arn   = substr(local.policies[count.index], 0, 3) == "arn:aws:" ? local.policies[count.index] : "arn:aws:iam::${var.account_id}:policy/${local.policies[count.index]}"
+  arn   = substr(local.policies[count.index], 0, 8) == "arn:aws:" ? local.policies[count.index] : "arn:aws:iam::${var.account_id}:policy/${local.policies[count.index]}"
 }
 
 resource "aws_iam_role_policy_attachment" "ecs" {
