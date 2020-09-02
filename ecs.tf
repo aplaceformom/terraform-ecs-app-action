@@ -12,7 +12,8 @@ locals {
 
   cluster    = {
     id                   = var.cluster_id
-    name                 = var.cluster_id
+    name                 = var.cluster_cluster_name
+    cluster_name         = var.cluster_cluster_name
     service_namespace_id = var.cluster_service_namespace_id
     region               = var.cluster_region
     vpc_id               = var.cluster_vpc_id
