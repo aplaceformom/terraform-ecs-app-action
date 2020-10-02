@@ -45,13 +45,19 @@ inputs:
 
   autoscaling:
     description: 'Enable/Disable service autoscaling'
-    default: false
+    default: true
   autoscaling_min:
     description: 'Minimum number of ECS tasks during scale-in'
     default: 3
   autoscaling_max:
     description: 'Maximum number of ECS tasks during scale-out'
-    default: 3
+    default: 21
+  autoscaling_target_cpu:
+    description: 'Autoscaling target CPU threshold'
+    default: 50
+  autoscaling_target_mem:
+    description: 'Autoscaling target memory threshold'
+    default: 50
   autoscaling_cooldown:
     description: 'How long to wait before scale-in'
     default: 300

@@ -105,7 +105,7 @@ List of subjective alternate names to apply to the generated SSL cert
 ### autoscaling
 Enable/Disable service autoscaling
 - required: false
-- default: false
+- default: true
 
 ### autoscaling_min
 Minimum number of ECS tasks during scale-in
@@ -115,7 +115,17 @@ Minimum number of ECS tasks during scale-in
 ### autoscaling_max
 Maximum number of ECS tasks during scale-out
 - required: false
-- default: 3
+- default: 21
+
+### autoscaling_target_cpu
+Target mean CPU usage.  Should CPU usage rise too much above this value then trigger auto scale-out.  Should CPU usage fall too far below this value then trigger auto scale-in.
+- required: false
+- default: 50
+
+### autoscaling_target_mem
+Target mean memory usage.  Should memory usage rise too much above this value then trigger auto scale-out.  Should memory usage fall too far below this value then trigger auto scale-in.
+- required: false
+- default: 50
 
 ### target_port
 TCP/IP port the container is listening on

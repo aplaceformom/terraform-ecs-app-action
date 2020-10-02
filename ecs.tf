@@ -74,6 +74,8 @@ module "ecs" {
   desired_count                  = var.autoscaling_min
   autoscaling_min_count          = var.autoscaling_min
   autoscaling_max_count          = var.autoscaling_max
+  autoscaling_target_cpu         = var.autoscaling_target_cpu
+  autoscaling_target_mem         = var.autoscaling_target_mem
   autoscaling_scale_out_cooldown = var.autoscaling_cooldown
 
   port        = var.target_port
