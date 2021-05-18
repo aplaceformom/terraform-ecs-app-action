@@ -1,0 +1,33 @@
+name: Lint
+on: [pull_request]
+
+jobs:
+  commitlint:
+    name: Git commit message lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '14'
+      - run: npm install
+      - uses: wagoid/commitlint-github-action@v3
+        env:
+          NODE_PATH: ${{ github.workspace }}/node_modules
+  terraform:
+    name: Tereraform format
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        tf: [0.12.31, 0.13.7]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: hashicorp/terraform-github-actions@master
+        env:
+          TF_CLI_ARGS: -check
+        with:
+          tf_actions_version: ${{ matrix.tf }}
+          tf_actions_subcommand: fmt
+          tf_actions_comment: true
