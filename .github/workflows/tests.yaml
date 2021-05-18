@@ -1,35 +1,28 @@
-on:
-  pull_request:
-    branches: ['**']
+name: Tests
+on: [pull_request]
 
 jobs:
-  tereraform:
-    name: 'Terraform Tests'
+  terraform:
+    name: Tereraform Validation Check
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         tf: [0.12.29, 0.13.4]
     steps:
-      - name: 'Checkout Source'
-        uses: actions/checkout@v2
-
-      - name: 'Terraform Format'
-        uses: hashicorp/terraform-github-actions@master
-        env:
-          TF_CLI_ARGS: -check
+      - uses: actions/checkout@v2
+      - uses: hashicorp/terraform-github-actions@master
         with:
           tf_actions_version: ${{ matrix.tf }}
-          tf_actions_subcommand: fmt
+          tf_actions_subcommand: init
           tf_actions_comment: true
-
-      - name: 'Terraform Validate'
-        uses: hashicorp/terraform-github-actions@master
+      - uses: hashicorp/terraform-github-actions@master
         with:
           tf_actions_version: ${{ matrix.tf }}
           tf_actions_subcommand: validate
           tf_actions_comment: true
-
   docker:
-    name: 'Docker tests'
+    name: Docker Build test
+    runs-on: ubuntu-latest
     steps:
       - name: 'Docker build'
         run: docker build .
