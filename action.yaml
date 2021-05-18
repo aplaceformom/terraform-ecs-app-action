@@ -84,14 +84,20 @@ inputs:
     description: 'Health check path'
     default: /
   health_check_timeout:
-    description: 'Health check timeout'
+    description: 'Health check timeout [Must be smaller than health_check_interval]'
     default: 10
   health_check_interval:
-    description: 'Health check interval'
+    description: 'Health check interval [Must be larger than health_check_timeout]'
     default: 30
   health_check_grace_period:
     description: 'Grace period in which to ignore the health check during task startup'
     default: 120
+  health_check_unhealthy_threshold:
+    description: 'How many failed healthchecks before marking a good container as bad'
+    default: 2
+  health_check_healthy_threshold:
+    description: 'How many successful healthchecks before marking a bad container as good'
+    default: 5
 
   plan:
     description: 'Perform a Terraform Plan'

@@ -85,11 +85,13 @@ module "ecs" {
   lb_protocol = var.listener_protocol
   certificate = local.certificate
 
-  health_check_port         = var.target_port
-  health_check_path         = var.health_check_path
-  health_check_timeout      = var.health_check_timeout
-  health_check_interval     = var.health_check_interval
-  health_check_grace_period = var.health_check_grace_period
+  health_check_port                 = var.target_port
+  health_check_path                 = var.health_check_path
+  health_check_timeout              = var.health_check_timeout
+  health_check_interval             = var.health_check_interval
+  health_check_grace_period         = var.health_check_grace_period
+  health_check_healthy_threshhold   = var.health_check_healthy_threshold
+  health_check_unhealthy_threshhold = var.health_check_unhealthy_threshold
 
   security_group_ids = [aws_security_group.self.id]
 
