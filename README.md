@@ -152,12 +152,12 @@ Health check path
 - default: /
 
 ### health_check_interval
-Health check interval
+Health check interval _[Must be larger than health_check_timeout]_
 - reqired: false
 - default: 30
 
 ### health_check_timeout
-Health check timeout
+Health check timeout _[Must be smaller than health_check_interval]_
 - reqired: false
 - default: 10
 
@@ -165,6 +165,14 @@ Health check timeout
 Grace period in which to ignore the health check during task startup
 - reqired: false
 - default: 120
+
+### health_check_unhealthy_threshold
+How many failed healthchecks before marking a good container as bad
+- default: 2
+
+### health_check_healthy_threshold
+How many successful healthchecks before marking a bad container as good
+- default: 5
 
 ### debug
 enable debugging
