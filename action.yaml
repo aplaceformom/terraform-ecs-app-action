@@ -36,6 +36,10 @@ inputs:
     description: 'Application secerts (similar to environment). E.g. { SECRET1 = VAL1, SECRET2 = VAL2 }'
     default: "{}"
 
+  sidecars:
+    description: 'Specify extra docker images to run as sidecars along side the primary image.  E.g. { name1 = image1, name2 = image2 }'
+    default: "{}"
+
   certificate:
     description: 'Certificate name to use.  If unspecified then a certificate will be automatically generated.'
     default: ""

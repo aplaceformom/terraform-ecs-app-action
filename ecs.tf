@@ -96,6 +96,7 @@ module "ecs" {
 
   environment = var.environment
   secrets = var.secrets
+  sidecars = var.sidecars
 
   service_level_settings = var.service_level_settings
 
