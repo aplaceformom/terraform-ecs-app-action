@@ -95,6 +95,7 @@ module "ecs" {
 
   environment = var.environment
   secrets = var.secrets
+  sidecars = var.sidecars
 
   tags = {
     app     = local.name
