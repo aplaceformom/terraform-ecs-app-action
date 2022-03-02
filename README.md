@@ -27,7 +27,7 @@ Usage
       tf_assume_role: TerraformApply
       remote_state_bucket: apfm-terraform-remotestate
       remote_lock_table: terraform-statelock
-      shared_state_key: /shared-infra/remotestate.file
+      shared_state_key: terraform/apfm.tfstate
   - name: My Service
     uses: apfm-actions/terraform-ecs-app-action@master
     with:
