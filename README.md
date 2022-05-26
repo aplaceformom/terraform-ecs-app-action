@@ -29,7 +29,7 @@ Usage
       remote_lock_table: terraform-statelock
       shared_state_key: terraform/apfm.tfstate
   - name: My Service
-    uses: apfm-actions/terraform-ecs-app-action@master
+    uses: apfm-actions/terraform-ecs-app-action@v1
     with:
       public: true
       debug: false
