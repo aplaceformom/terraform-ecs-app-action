@@ -19,7 +19,7 @@ Usage
       aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       aws-region: us-west-2
   - name: My Project
-    uses: apfm-actions/terraform-project-base-action@master
+    uses: apfm-actions/terraform-project-base-action@v1
     with:
       project: examples
       owner: MyTeam
@@ -34,6 +34,9 @@ Usage
       public: true
       debug: false
 ```
+
+**NOTE: Please be aware that using `@master` will result in using the latest
+development version of this action.**
 
 Inputs
 ------
