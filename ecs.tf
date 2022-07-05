@@ -56,7 +56,7 @@ resource "aws_iam_role_policy_attachment" "ecs" {
 }
 
 module "ecs" {
-  source = "github.com/aplaceformom/terraform-ecs-app?ref=feat%2Fservice_level_monitoring"
+  source = "github.com/aplaceformom/terraform-ecs-app?ref=service_level_monitoring"
 
   name    = local.name
   prefix  = var.prefix != "" ? var.prefix : substr(local.name, 0, 6)
