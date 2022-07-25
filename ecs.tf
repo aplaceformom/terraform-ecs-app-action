@@ -96,6 +96,8 @@ module "ecs" {
   environment = var.environment
   secrets = var.secrets
 
+  service_level_settings = var.service_level_settings
+
   tags = {
     app     = local.name
     repo    = var.github_repository
