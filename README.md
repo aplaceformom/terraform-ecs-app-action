@@ -175,6 +175,24 @@ Grace period in which to ignore the health check during task startup
 - reqired: false
 - default: 120
 
+### service_level_settings
+Map of settings for service level monitoring
+- reqired: false
+- default: "{
+      slo1_eval_periods = 2,
+      slo1_threshold = 1,
+      slo2_eval_periods = 5,
+      slo2_threshold = 1,
+      slo3_eval_periods = 5,
+      slo3_threshold = 0.1,
+      slo4_eval_periods = 5,
+      slo4_threshold = 30,
+      slo6_eval_periods = 15,
+      slo6_threshold = 90,
+      slo7_eval_periods = 15,
+      slo7_threshold = 90
+    }"
+
 ### debug
 enable debugging
 - default: false
