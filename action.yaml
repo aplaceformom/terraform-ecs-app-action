@@ -93,6 +93,23 @@ inputs:
     description: 'Grace period in which to ignore the health check during task startup'
     default: 120
 
+  service_level_settings:
+    description: 'Map of default settings for service level monitoring'
+    default: "{
+      slo1_eval_periods = 2,
+      slo1_threshold = 1,
+      slo2_eval_periods = 5,
+      slo2_threshold = 1,
+      slo3_eval_periods = 5,
+      slo3_threshold = 0.1,
+      slo4_eval_periods = 5,
+      slo4_threshold = 30,
+      slo6_eval_periods = 15,
+      slo6_threshold = 90,
+      slo7_eval_periods = 15,
+      slo7_threshold = 90
+    }"
+
   plan:
     description: 'Perform a Terraform Plan'
     default: true
