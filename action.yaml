@@ -94,7 +94,7 @@ inputs:
     default: 120
 
   service_level_settings:
-    description: 'Map of default settings for service level monitoring'
+    description: 'Map of settings for service level monitoring'
     default: "{
       slo1_eval_periods = 2,
       slo1_threshold = 1,
