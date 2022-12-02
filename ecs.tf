@@ -67,6 +67,7 @@ module "ecs" {
   public  = var.public
   cluster = local.cluster
   region  = var.region
+  xray    = var.xray
 
   task_role_arn = aws_iam_role.ecs.arn
 
