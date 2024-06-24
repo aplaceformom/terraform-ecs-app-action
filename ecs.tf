@@ -10,7 +10,7 @@ locals {
   policies   = var.policies != "" ? split(",", var.policies) : []
   zone_id    = var.public ? var.dns_zone_id_public : var.dns_zone_id_private
 
-  cluster    = {
+  cluster = {
     id                   = var.cluster_id
     name                 = var.cluster_cluster_name
     cluster_name         = var.cluster_cluster_name
@@ -26,7 +26,7 @@ locals {
 }
 
 resource "aws_iam_role" "ecs" {
-  name = "${local.name}-role"
+  name               = "${local.name}-role"
   assume_role_policy = <<EOF
 {
   "Version": "2012-10-17",
@@ -50,8 +50,8 @@ data "aws_iam_policy" "selected" {
 }
 
 resource "aws_iam_role_policy_attachment" "ecs" {
-  count = length(local.policies)
-  role  = aws_iam_role.ecs.name
+  count      = length(local.policies)
+  role       = aws_iam_role.ecs.name
   policy_arn = data.aws_iam_policy.selected[count.index].arn
 }
 
@@ -94,7 +94,7 @@ module "ecs" {
   security_group_ids = [aws_security_group.self.id]
 
   environment = var.environment
-  secrets = var.secrets
+  secrets     = var.secrets
 
   service_level_settings = var.service_level_settings
 
